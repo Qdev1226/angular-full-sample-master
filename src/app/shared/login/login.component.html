@@ -1,0 +1,54 @@
+<div class="col-md-6 col-md-offset-3" id="loginContent">
+  <form id="frmLogin" [formGroup]="frmLogin" novalidate (ngSubmit)="onLogin()" class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-12 col-sm-offset-3">
+        <h1>Login</h1>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" [attr.for]="username">{{ 'login.label-username' | translate }}*:</label>
+      <div class="col-sm-5">
+        <input required
+               type="text"
+               class="form-control" formControlName="username"
+               [(ngModel)]="username"
+               id="username" name="username"
+               title="{{ 'login.label-username' | translate }}"
+               placeholder="{{'login.placeholders.username' | translate }}"
+        />
+        <app-validation-message
+          [control]="frmLogin.get('username')"
+          [type]="'required'"
+          [error]="'validations.required.username' | translate">
+        </app-validation-message>
+      </div>
+    </div>
+    <div class="form-group">
+      <!--TODO re-define dinamic input with validations-->
+      <label class="control-label col-sm-3" [attr.for]="password">{{ 'login.label-password' | translate }}*:</label>
+      <div class="col-sm-5">
+        <input required
+               type="password"
+               class="form-control" formControlName="password"
+               [(ngModel)]="password"
+               id="password" name="password"
+               title="{{ 'login.label-password' | translate }}"
+               placeholder="{{'login.placeholders.password' | translate }}"
+        />
+        <app-validation-message
+          [control]="frmLogin.get('password')"
+          [type]="'required'"
+          [error]="'validations.required.password' | translate">
+        </app-validation-message>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 pull-right">
+        <button id="btnLogin" type="submit" [disabled]="frmLogin.invalid || loading" class="btn btn-primary">
+          {{ 'login.button-login' | translate }}
+        </button>
+        <img alt="Loading ..." *ngIf="loading" src="./assets/images/spinner2.gif"/>
+      </div>
+    </div>
+  </form>
+</div>

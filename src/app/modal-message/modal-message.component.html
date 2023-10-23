@@ -1,0 +1,37 @@
+<div class="modal fade" bsModal id="{{identifier}}" #modalMsg="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1"
+     role="dialog" aria-hidden="true">
+  <div class="full-height vertical-align">
+    <div class="modal-dialog modal-sm" style="margin: 0 auto">
+      <div class="modal-content">
+        <div class="modal-header vertical-align">
+          <div class="row">
+            <div class="col-sm-1">
+              <i *ngIf="displayIcon" class="fa {{getIcon()}} fa-lg" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm-9">
+              <h4 class="modal-title pull-left">{{ getTitle() }}</h4>
+            </div>
+            <div class="col-sm-1">
+              <button type="button" class="close" (click)="hide()" aria-label="Close">&times;</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body vertical-align"><span>{{ message }}</span></div>
+        <div class="modal-footer">
+          <div class="col-xs-12 col-sm-6">
+            <button id="btnConfirmAlert" type="button" class="col-xs-12 col-sm-12 btn"
+                    (click)="onConfirm()"
+                    *ngIf="type == 'CONFIRM'">
+              {{getOkTitle() | async }}
+            </button>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <button id="btnCancelAlert" type="button" class="col-xs-12 col-sm-12 btn btn-primary" (click)="onCancel()">
+              {{getCancelTitle() | async }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

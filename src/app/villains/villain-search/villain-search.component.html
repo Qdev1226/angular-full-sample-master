@@ -1,0 +1,7 @@
+<div class="input-group">
+  <span class="input-group-addon" id="search-query"><span class="glyphicon glyphicon-search"></span></span>
+  <input type="text" class="form-control input-lg" aria-describedby="search-query"
+         placeholder="{{ 'villains.placeholders.search' | translate}}"
+         [(ngModel)]="model"
+         (ngModelChange)="this.searchTerms$.next(model)"/>
+</div>

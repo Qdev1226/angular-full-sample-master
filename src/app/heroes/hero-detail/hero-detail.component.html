@@ -1,0 +1,26 @@
+<h1>{{'heroes.detail-title' | translate}}</h1>
+<div *ngIf="hero | async; let hero;">
+  <div class="row">
+    <label class="col-sm-2">{{ 'heroes.fields.name' | translate}}:</label>
+    <div class="col-sm-9">{{hero.name}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-2">{{ 'heroes.fields.editorial' | translate}}: </label>
+    <div class="col-sm-9">{{hero.editorial | description : (editorials | async)}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-2">{{ 'heroes.fields.preview' | translate}}:</label>
+    <div class="col-sm-9">
+      <img *ngIf="hero.image" src="assets/images/{{hero.image}}" alt="{{hero.name}}"/>
+      <img *ngIf="!hero.image" src="assets/images/not-available.png" width="130px" height="100px"/>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-secondary btn-sm" routerLink="/heroes">
+      <i class="fa fa-arrow-left"></i> {{'back' | translate }}
+    </button>
+    <button (click)="delete(hero.id)" class="btn btn-danger btn-sm">
+      <i class="fa fa-times"></i> {{'heroes.delete' | translate }}
+    </button>
+  </div>
+</div>
